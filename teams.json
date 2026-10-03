@@ -1,0 +1,502 @@
+[
+{
+"name": "Farfadox",
+"team": "Team Mafia",
+"slug": "farfadox"
+},
+{
+"name": "Conterstine",
+"team": "Team Mafia",
+"slug": "conterstine"
+},
+{
+"name": "Crisgreen",
+"team": "Team Mafia",
+"slug": "crisgreen"
+},
+{
+"name": "Shadoune777",
+"team": "Team Mafia",
+"slug": "shadoune666"
+},
+{
+"name": "Serpias",
+"team": "Team Mafia",
+"slug": "serpias"
+},
+{
+"name": "Sapnap",
+"team": "Team Mafia",
+"slug": "sapnap"
+},
+{
+"name": "SrAmilcar",
+"team": "Team Mafia",
+"slug": "sramilcar"
+},
+{
+"name": "Pirutastic",
+"team": "Team Mafia",
+"slug": "pirutastic"
+},
+{
+"name": "Diffrent",
+"team": "Team Mafia",
+"slug": "diffrent"
+},
+{
+"name": "EsVandal",
+"team": "Team Mafia",
+"slug": "esvandal"
+},
+{
+"name": "Rusbik",
+"team": "Team Mafia",
+"slug": "rubik"
+},
+{
+"name": "Giantv_",
+"team": "Team Mafia",
+"slug": "giaantv"
+},
+{
+"name": "Oscurlod",
+"team": "Team Mafia",
+"slug": "oscu"
+},
+{
+"name": "vickypalami",
+"team": "Team Minitas",
+"slug": "vickypalami"
+},
+{
+"name": "AnsiChan",
+"team": "Team Minitas",
+"slug": "ansichan"
+},
+{
+"name": "GirlOfNox",
+"team": "Team Minitas",
+"slug": "girlofnox"
+},
+{
+"name": "Nuvia_",
+"team": "Team Minitas",
+"slug": "nuvia"
+},
+{
+"name": "DraCherry",
+"team": "Team Minitas",
+"slug": "atinycherry"
+},
+{
+"name": "Maryblog",
+"team": "Team Minitas",
+"slug": "maryblog"
+},
+{
+"name": "Brillagerr",
+"team": "Team Minitas",
+"slug": "brillager"
+},
+{
+"name": "Puji2",
+"team": "Team Minitas",
+"slug": "puji2"
+},
+{
+"name": "TheBlazer97",
+"team": "Team Minitas",
+"slug": "theblazer97"
+},
+{
+"name": "SeFirox",
+"team": "Team Minitas",
+"slug": "sefirox"
+},
+{
+"name": "yMiau",
+"team": "Team Minitas",
+"slug": "ymiau"
+},
+{
+"name": "vaaLmc",
+"team": "Team Minitas",
+"slug": "vaal"
+},
+{
+"name": "Limonxrd",
+"team": "Team Minitas",
+"slug": "limonxrdd"
+},
+{
+"name": "meowynissi",
+"team": "Team Minitas",
+"slug": "meowynissi"
+},
+{
+"name": "EmanuelZpk",
+"team": "Team Minitas",
+"slug": "emanuelzpk"
+},
+{
+"name": "dedreviil",
+"team": "DOS PUNTOS UVE",
+"slug": "elded"
+},
+{
+"name": "LarryCabirria",
+"team": "DOS PUNTOS UVE",
+"slug": "larrycabirria"
+},
+{
+"name": "RobertoCein",
+"team": "DOS PUNTOS UVE",
+"slug": "robertocein"
+},
+{
+"name": "Daniel_Zoom",
+"team": "DOS PUNTOS UVE",
+"slug": "daniel_zoom"
+},
+{
+"name": "Charliitoss",
+"team": "DOS PUNTOS UVE",
+"slug": "charlitoss"
+},
+{
+"name": "iChurro",
+"team": "DOS PUNTOS UVE",
+"slug": "ichurrox"
+},
+{
+"name": "DennisCyan",
+"team": "DOS PUNTOS UVE",
+"slug": "denniscyan"
+},
+{
+"name": "Lenniay",
+"team": "DOS PUNTOS UVE",
+"slug": "lenniay"
+},
+{
+"name": "MariioTQ",
+"team": "DOS PUNTOS UVE",
+"slug": "mariotq"
+},
+{
+"name": "SorlacLL",
+"team": "DOS PUNTOS UVE",
+"slug": "sorlac"
+},
+{
+"name": "IsManuPlay",
+"team": "DOS PUNTOS UVE",
+"slug": "ismanuplay"
+},
+{
+"name": "JavierMtzXD",
+"team": "DOS PUNTOS UVE",
+"slug": "javiermtz"
+},
+{
+"name": "JimRSNG",
+"team": "DOS PUNTOS UVE",
+"slug": "jimrisingtv"
+},
+{
+"name": "itspennyGG",
+"team": "DOS PUNTOS UVE",
+"slug": "itspennygg"
+},
+{
+"name": "SherryVill",
+"team": "DOS PUNTOS UVE",
+"slug": "sherry_vill"
+},
+{
+"name": "RenRize",
+"team": "Los hijos de perra",
+"slug": "renrize"
+},
+{
+"name": "eldruum",
+"team": "Los hijos de perra",
+"slug": "eldruum"
+},
+{
+"name": "SoyBarcaGamer",
+"team": "Los hijos de perra",
+"slug": "barcagamer"
+},
+{
+"name": "HasvikGG",
+"team": "Los hijos de perra",
+"slug": "hasvik"
+},
+{
+"name": "Alba_Clouthier",
+"team": "Los hijos de perra",
+"slug": "alba_clouthier"
+},
+{
+"name": "WestCOL",
+"team": "EromeTeam",
+"slug": "westcol"
+},
+{
+"name": "Samulx",
+"team": "EromeTeam",
+"slug": "samulx"
+},
+{
+"name": "Lonche",
+"team": "EromeTeam",
+"slug": "lonche"
+},
+{
+"name": "SoyPanxD",
+"team": "EromeTeam",
+"slug": "soypan"
+},
+{
+"name": "Jelty015",
+"team": "EromeTeam",
+"slug": "jelty"
+},
+{
+"name": "MYMTUMTUM",
+"team": "EromeTeam",
+"slug": "mymtumtum"
+},
+{
+"name": "Elvenado98__",
+"team": "EromeTeam",
+"slug": "elvenado98"
+},
+{
+"name": "ZilvyVT",
+"team": "EromeTeam",
+"slug": "zilvyvt"
+},
+{
+"name": "ElBudget",
+"team": "EromeTeam",
+"slug": "elbudget"
+},
+{
+"name": "Montoyatr",
+"team": "EromeTeam",
+"slug": "montoyatr"
+},
+{
+"name": "TheAlex30",
+"team": "EromeTeam",
+"slug": "thealex30"
+},
+{
+"name": "Zilverk",
+"team": "EromeTeam",
+"slug": "zilverk"
+},
+{
+"name": "AQUINOby02",
+"team": "WEBONES CORP",
+"slug": "aquino"
+},
+{
+"name": "Soarinng",
+"team": "WEBONES CORP",
+"slug": "soarinng"
+},
+{
+"name": "KendoMurft",
+"team": "WEBONES CORP",
+"slug": "kendomurft"
+},
+{
+"name": "lLocochon",
+"team": "WEBONES CORP",
+"slug": "locochon"
+},
+{
+"name": "TomyCatt",
+"team": "WEBONES CORP",
+"slug": "tomycatt"
+},
+{
+"name": "Mictia00",
+"team": "WEBONES CORP",
+"slug": "mictia00"
+},
+{
+"name": "FeirlyGab",
+"team": "WEBONES CORP",
+"slug": "feirlygab"
+},
+{
+"name": "sylvee_",
+"team": "WEBONES CORP",
+"slug": "sylvee"
+},
+{
+"name": "chibidoki",
+"team": "WEBONES CORP",
+"slug": "chibidoki"
+},
+{
+"name": "CapitanGatoYT",
+"team": "WEBONES CORP",
+"slug": "capitangato"
+},
+{
+"name": "TiroLocoo",
+"team": "WEBONES CORP",
+"slug": "tirolocoo"
+},
+{
+"name": "starvtuberr",
+"team": "WEBONES CORP",
+"slug": "starvtuber"
+},
+{
+"name": "SpreenDMC",
+"team": "WEBONES CORP",
+"slug": "spreen"
+},
+{
+"name": "Duxorethey",
+"team": "WEBONES CORP",
+"slug": "duxo"
+},
+{
+"name": "James_AAP",
+"team": "Aldo Erome Buscar",
+"slug": "jamesaap"
+},
+{
+"name": "aldo_geo",
+"team": "Aldo Erome Buscar",
+"slug": "aldo_geo"
+},
+{
+"name": "MrFerruzca",
+"team": "Aldo Erome Buscar",
+"slug": "mrferruzca"
+},
+{
+"name": "SonPancho",
+"team": "Aldo Erome Buscar",
+"slug": "sonpancho"
+},
+{
+"name": "FishChipsYT",
+"team": "Aldo Erome Buscar",
+"slug": "fishchips_yt"
+},
+{
+"name": "Filisgg",
+"team": "Aldo Erome Buscar",
+"slug": "filisgg"
+},
+{
+"name": "GabyVillalbam",
+"team": "Aldo Erome Buscar",
+"slug": "gabyvillalbam"
+},
+{
+"name": "GamsterGaming",
+"team": "Aldo Erome Buscar",
+"slug": "gamstergaming"
+},
+{
+"name": "lucowskyx",
+"team": "Aldo Erome Buscar",
+"slug": "lucowskyx"
+},
+{
+"name": "ALK4PON3OP",
+"team": "BonitasConRifles",
+"slug": "alkapone"
+},
+{
+"name": "VanishedTwo",
+"team": "BonitasConRifles",
+"slug": "vanished"
+},
+{
+"name": "xNephtunie",
+"team": "BonitasConRifles",
+"slug": "nephtunie"
+},
+{
+"name": "NiaLakshart",
+"team": "BonitasConRifles",
+"slug": "nialakshart"
+},
+{
+"name": "JalineKS",
+"team": "BonitasConRifles",
+"slug": "jalineks"
+},
+{
+"name": "Wereverwero",
+"team": "BonitasConRifles",
+"slug": "wereverwero"
+},
+{
+"name": "Angelx_xd",
+"team": "BonitasConRifles",
+"slug": "angelx_xd"
+},
+{
+"name": "4andeR",
+"team": "BonitasConRifles",
+"slug": "tvander"
+},
+{
+"name": "Elemao",
+"team": "BonitasConRifles",
+"slug": "elemao"
+},
+{
+"name": "ANTONIcra96",
+"team": "Los Alcoholicos",
+"slug": "antonicratv"
+},
+{
+"name": "angellioli",
+"team": "Los Alcoholicos",
+"slug": "angellioli"
+},
+{
+"name": "manolito2000",
+"team": "Los Alcoholicos",
+"slug": "manolito"
+},
+{
+"name": "AbueloRelic",
+"team": "Los Alcoholicos",
+"slug": "reliclol"
+},
+{
+"name": "belapunkk",
+"team": "Los Alcoholicos",
+"slug": "belapunk"
+},
+{
+"name": "coldified",
+"team": "Sin hermandad",
+"slug": "coldified"
+},
+{
+"name": "iGrowan",
+"team": "Sin hermandad",
+"slug": "growan"
+},
+{
+"name": "Wuilyer11",
+"team": "Sin hermandad",
+"slug": "wuilyer11"
+}
+]
