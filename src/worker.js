@@ -1,6 +1,8 @@
 // Cloudflare Worker: sirve la pagina (carpeta public) y responde /api/viewers
+const CHUNK = 25;            // canales por consulta a Kick (margen de seguridad)
 let tokenCache = { value: null, exp: 0 };
 let dataCache = { body: null, exp: 0 };
+let last = {};               // ultimo valor conocido de cada canal
 
 async function getToken(env) {
   if (tokenCache.value && Date.now() < tokenCache.exp) return tokenCache.value;
@@ -19,6 +21,22 @@ async function getToken(env) {
   return tokenCache.value;
 }
 
+async function fetchChunk(slugs, token) {
+  const qs = slugs.map((s) => "slug=" + encodeURIComponent(s)).join("&");
+  const r = await fetch("https://api.kick.com/public/v1/channels?" + qs, {
+    headers: { Authorization: "Bearer " + token },
+  });
+  if (r.status === 401) tokenCache = { value: null, exp: 0 };
+  if (!r.ok) throw new Error("Kick channels: " + r.status);
+  return (await r.json()).data || [];
+}
+
+function split(arr, n) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += n) out.push(arr.slice(i, i + n));
+  return out;
+}
+
 async function viewers(request, env) {
   const headers = { "Content-Type": "application/json", "Cache-Control": "public, max-age=15" };
   if (dataCache.body && Date.now() < dataCache.exp) return new Response(dataCache.body, { headers });
@@ -27,17 +45,31 @@ async function viewers(request, env) {
     const slugs = [...new Set(teams.map((t) => t.slug))];
     const token = await getToken(env);
     const out = {};
-    for (let i = 0; i < slugs.length; i += 50) {
-      const qs = slugs.slice(i, i + 50).map((s) => "slug=" + encodeURIComponent(s)).join("&");
-      const r = await fetch("https://api.kick.com/public/v1/channels?" + qs, {
-        headers: { Authorization: "Bearer " + token },
-      });
-      if (!r.ok) throw new Error("Kick channels: " + r.status);
-      for (const c of (await r.json()).data || []) {
-        out[c.slug.toLowerCase()] = c.stream && c.stream.is_live ? c.stream.viewer_count || 0 : 0;
-      }
-    }
-    const body = JSON.stringify({ updated: Date.now(), viewers: out });
+    const errors = [];
+    const run = async (group) => {
+      try {
+        for (const c of await fetchChunk(group, token)) {
+          out[c.slug.toLowerCase()] = c.stream && c.stream.is_live ? c.stream.viewer_count || 0 : 0;
+        }
+      } catch (e) { errors.push(String(e)); }
+    };
+    // 1) todas las tandas a la vez
+    await Promise.all(split(slugs, CHUNK).map(run));
+    // 2) reintento de los que faltaron, en tandas mas chicas
+    let missing = slugs.filter((s) => !(s in out));
+    if (missing.length) await Promise.all(split(missing, 10).map(run));
+    missing = slugs.filter((s) => !(s in out));
+    // 3) los que sigan sin respuesta conservan su ultimo valor conocido
+    for (const s of missing) out[s] = last[s] || 0;
+    for (const s of slugs) if (!missing.includes(s)) last[s] = out[s];
+    const meta = {
+      requested: slugs.length,
+      returned: slugs.length - missing.length,
+      live: slugs.filter((s) => out[s] > 0).length,
+      missing,
+      errors: errors.slice(0, 3),
+    };
+    const body = JSON.stringify({ updated: Date.now(), viewers: out, meta });
     dataCache = { body, exp: Date.now() + 15000 };
     return new Response(body, { headers });
   } catch (e) {
