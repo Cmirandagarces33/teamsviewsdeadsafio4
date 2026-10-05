@@ -43,7 +43,7 @@ async function viewers(request, env) {
   if (dataCache.body && Date.now() < dataCache.exp) return new Response(dataCache.body, { headers });
   try {
     const teams = await (await env.ASSETS.fetch(new URL("/teams.json", request.url))).json();
-    const slugs = [...new Set(teams.map((t) => t.slug))];
+    const slugs = [...new Set(teams.map((t) => t.slug).filter(Boolean))];
     const token = await getToken(env);
     const out = {};
     const errors = [];
@@ -85,7 +85,7 @@ async function avatars(request, env) {
   if (avatarCache.body && Date.now() < avatarCache.exp) return mk(avatarCache.body, 3600);
   try {
     const teams = await (await env.ASSETS.fetch(new URL("/teams.json", request.url))).json();
-    const slugs = [...new Set(teams.map((t) => t.slug))];
+    const slugs = [...new Set(teams.map((t) => t.slug).filter(Boolean))];
     const token = await getToken(env);
     const errors = [];
     const idToSlug = {};
