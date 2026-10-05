@@ -3,6 +3,7 @@ const CHUNK = 25;            // canales por consulta a Kick (margen de seguridad
 let tokenCache = { value: null, exp: 0 };
 let dataCache = { body: null, exp: 0 };
 let last = {};               // ultimo valor conocido de cada canal
+let avatarCache = { body: null, exp: 0 };
 
 async function getToken(env) {
   if (tokenCache.value && Date.now() < tokenCache.exp) return tokenCache.value;
@@ -77,9 +78,49 @@ async function viewers(request, env) {
   }
 }
 
+
+// Fotos de perfil: /api/avatars  ->  { avatars: { slug: urlFoto }, meta }
+async function avatars(request, env) {
+  const mk = (body, ttl) => new Response(body, { headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=" + ttl } });
+  if (avatarCache.body && Date.now() < avatarCache.exp) return mk(avatarCache.body, 3600);
+  try {
+    const teams = await (await env.ASSETS.fetch(new URL("/teams.json", request.url))).json();
+    const slugs = [...new Set(teams.map((t) => t.slug))];
+    const token = await getToken(env);
+    const errors = [];
+    const idToSlug = {};
+    // 1) slug -> id de usuario (viene en la consulta de canales)
+    await Promise.all(split(slugs, CHUNK).map(async (g) => {
+      try { for (const c of await fetchChunk(g, token)) idToSlug[c.broadcaster_user_id] = c.slug.toLowerCase(); }
+      catch (e) { errors.push(String(e)); }
+    }));
+    // 2) id -> foto de perfil (consulta de usuarios)
+    const out = {};
+    await Promise.all(split(Object.keys(idToSlug), CHUNK).map(async (g) => {
+      try {
+        const r = await fetch("https://api.kick.com/public/v1/users?" + g.map((i) => "id=" + i).join("&"), { headers: { Authorization: "Bearer " + token } });
+        if (!r.ok) throw new Error("Kick users: " + r.status);
+        for (const u of (await r.json()).data || []) {
+          if (u.profile_picture && idToSlug[u.user_id]) out[idToSlug[u.user_id]] = u.profile_picture;
+        }
+      } catch (e) { errors.push(String(e)); }
+    }));
+    const missing = slugs.filter((x) => !out[x]);
+    const body = JSON.stringify({ updated: Date.now(), avatars: out, meta: { requested: slugs.length, found: slugs.length - missing.length, missing, errors: errors.slice(0, 3) } });
+    // si salio bien se guarda 6 horas; si hubo fallos, solo 1 minuto
+    const ok = !errors.length && missing.length < slugs.length * 0.1;
+    avatarCache = { body, exp: Date.now() + (ok ? 6 * 3600e3 : 60e3) };
+    return mk(body, ok ? 3600 : 30);
+  } catch (e) {
+    return new Response(JSON.stringify({ error: String(e) }), { status: 502, headers: { "Content-Type": "application/json" } });
+  }
+}
+
 export default {
   async fetch(request, env) {
-    if (new URL(request.url).pathname === "/api/viewers") return viewers(request, env);
+    const path = new URL(request.url).pathname;
+    if (path === "/api/viewers") return viewers(request, env);
+    if (path === "/api/avatars") return avatars(request, env);
     return env.ASSETS.fetch(request);
   },
 };
